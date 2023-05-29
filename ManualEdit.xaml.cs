@@ -60,6 +60,19 @@ namespace CST238_Final_Project
             }
         }
 
+        public class CellPosition
+        {
+            public int Row { get; }
+            public int Column { get; }
+
+            public CellPosition(int row, int column)
+            {
+                Row = row;
+                Column = column;
+            }
+        }
+
+
         private Game selectedGame;
         public Game SelectedGame
         {
@@ -93,8 +106,8 @@ namespace CST238_Final_Project
             }
         }
 
-        private ObservableCollection<ObservableCollection<Tile>> map;
-        public ObservableCollection<ObservableCollection<Tile>> Map 
+        private List<List<Tile>> map;
+        public List<List<Tile>> Map 
         { 
             get { return map; } 
             set
@@ -103,6 +116,7 @@ namespace CST238_Final_Project
                 OnPropertyChanged(nameof(Map));
             }
         }
+
 
 
         public ICommand DrawTileCommand { get; }
@@ -131,17 +145,20 @@ namespace CST238_Final_Project
             // Initialize the command for changing a cell tile
             ChangeCellTileCommand = new RelayCommand(ChangeCellTile);
 
-            // Initialize the map with cells
-            Map = new ObservableCollection<ObservableCollection<Tile>>();
+            // Initialize the map with buttons
+            Map = new List<List<Tile>>();
             for (int row = 0; row < 10; row++)
             {
-                ObservableCollection<Tile> rowCells = new ObservableCollection<Tile>();
+                List<Tile> rowButtons = new List<Tile>();
                 for (int col = 0; col < 10; col++)
                 {
-                    rowCells.Add(Tiles[3]);
+                    Tile tile = new Tile();
+                    tile.TileImage = new BitmapImage(new Uri("pack://application:,,,/Images/grass_tile.png"));
+                    rowButtons.Add(tile);
                 }
-                Map.Add(rowCells);
+                Map.Add(rowButtons);
             }
+
         }
 
         private void OptimizeForButton_Click(object sender, RoutedEventArgs e)
@@ -172,23 +189,21 @@ namespace CST238_Final_Project
         {
             if (parameter is Tile tile)
             {
-                int rowIndex = -1;
-                int colIndex = -1;
-
-                // Retrieve the row and column indices from the command parameter
-                if (parameter is Tuple<int, int> indices)
+                // Find the clicked tile in the Map and update its image
+                foreach (var row in Map)
                 {
-                    rowIndex = indices.Item1;
-                    colIndex = indices.Item2;
-                }
-
-                if (rowIndex >= 0 && colIndex >= 0 && rowIndex < Map.Count && colIndex < Map[rowIndex].Count)
-                {
-                    // Update the corresponding cell with the selected tile
-                    Map[rowIndex][colIndex] = tile;
+                    foreach (var cell in row)
+                    {
+                        if (cell == tile)
+                        {
+                            cell.TileImage = CurrentSelection.TileImage;
+                            return;
+                        }
+                    }
                 }
             }
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 

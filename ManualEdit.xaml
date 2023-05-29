@@ -154,8 +154,8 @@
                                 <ItemsControl.ItemTemplate>
                                     <DataTemplate>
                                         <Button Command="{Binding RelativeSource={RelativeSource AncestorType=Page}, Path=DataContext.ChangeCellTileCommand}"
-                                CommandParameter="{Binding}" 
-                                Margin="1">
+                                                CommandParameter="{Binding}" 
+                                                Margin="1">
                                             <Button.Template>
                                                 <ControlTemplate>
                                                     <Image Source="{Binding TileImage}" Width="40" Height="40" Stretch="UniformToFill"/>
