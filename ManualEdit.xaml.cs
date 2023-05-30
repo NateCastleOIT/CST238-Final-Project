@@ -60,19 +60,6 @@ namespace CST238_Final_Project
             }
         }
 
-        public class CellPosition
-        {
-            public int Row { get; }
-            public int Column { get; }
-
-            public CellPosition(int row, int column)
-            {
-                Row = row;
-                Column = column;
-            }
-        }
-
-
         private Game selectedGame;
         public Game SelectedGame
         {
@@ -173,8 +160,15 @@ namespace CST238_Final_Project
 
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
         {
-            // Navigate to the final page (e.g., OptimizedOutput)
-            NavigationService?.Navigate(new OptimizedOutput());
+            OptimizedOutput optimizedOutputPage = new OptimizedOutput();
+            Window optimizedOutputWindow = new Window
+            {
+                Content = optimizedOutputPage,
+                Title = "Optimized Output",
+                Width = 1050,
+                Height = 525
+            };
+            optimizedOutputWindow.Show();
         }
 
         private void TileClicked(object parameter)

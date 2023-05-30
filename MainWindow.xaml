@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CST238_Final_Project"
         mc:Ignorable="d"
-        Title="Grid Resource Optimization"  Height="800" Width="1050">
+        Title="Grid Resource Optimization"  Height="525" Width="1050">
     <Grid>
         <Frame x:Name="MainFrame" NavigationUIVisibility="Hidden"/>
     </Grid>

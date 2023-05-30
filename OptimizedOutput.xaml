@@ -1,14 +1,111 @@
 ﻿<Page x:Class="CST238_Final_Project.OptimizedOutput"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:CST238_Final_Project"
-      mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
-      Title="OptimizedOutput">
-
+      Title="Optimized Output">
+    <Page.Resources>
+        <local:RankToColorConverter x:Key="RankToColorConverter"/>
+    </Page.Resources>
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Menu Bar -->
+        <Menu Grid.Row="0">
+            <MenuItem Header="_File">
+                <MenuItem Header="_Open"/>
+                <MenuItem Header="_Save"/>
+            </MenuItem>
+            <MenuItem Header="_Edit">
+                <MenuItem Header="_Cut"/>
+                <MenuItem Header="_Copy"/>
+                <MenuItem Header="_Paste"/>
+            </MenuItem>
+            <MenuItem Header="_Help">
+                <MenuItem Header="_About"/>
+            </MenuItem>
+        </Menu>
+
+        <!-- Content Grid -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+
+            <!-- Output Image -->
+            <Image Grid.Column="0" Source="{Binding OutputImageUri}" Width="450" Height="450" Margin="10" VerticalAlignment="Top"/>
+
+            <!-- Legend -->
+            <!-- Map Size and Legend -->
+            <Grid Grid.Column="1" Width="Auto" Margin="10" Background="LightGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+
+                <!-- Legend -->
+                <StackPanel Grid.Column="1" Margin="10">
+                    <StackPanel.Resources>
+                        <BitmapImage x:Key="TreeImage" UriSource="pack://application:,,,/Images/tree_tile.png"/>
+                        <BitmapImage x:Key="StoneImage" UriSource="pack://application:,,,/Images/stone_tile.png"/>
+                        <BitmapImage x:Key="WaterImage" UriSource="pack://application:,,,/Images/water_tile.png"/>
+                        <BitmapImage x:Key="GrassImage" UriSource="pack://application:,,,/Images/grass_tile.png"/>
+                        <BitmapImage x:Key="MillhouseImage" UriSource="pack://application:,,,/Images/millhouse_tile.png"/>
+                    </StackPanel.Resources>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <TextBlock Text="Map Size: 10x10" FontWeight="Bold" FontSize="16" Margin="10" Padding="5" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{StaticResource TreeImage}" Height="32" Width="32" Margin="2"/>
+                        <TextBlock Text="Tree" VerticalAlignment="Center" Margin="2"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{StaticResource StoneImage}" Height="32" Width="32" Margin="2"/>
+                        <TextBlock Text="Stone" VerticalAlignment="Center" Margin="2"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{StaticResource WaterImage}" Height="32" Width="32" Margin="2"/>
+                        <TextBlock Text="Water" VerticalAlignment="Center" Margin="2"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{StaticResource GrassImage}" Height="32" Width="32" Margin="2"/>
+                        <TextBlock Text="Grass" VerticalAlignment="Center" Margin="2"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5">
+                        <Image Source="{StaticResource MillhouseImage}" Height="64" Width="64" Margin="2"/>
+                        <TextBlock Text="Millhouse" VerticalAlignment="Center" Margin="2"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <!-- Top X Orientations -->
+            <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Margin="10" Height="Auto">
+                <StackPanel Margin="10">
+                    <TextBlock Text="Top Orientations" FontSize="24" FontWeight="Bold"/>
+                    <ItemsControl ItemsSource="{Binding TopOrientations}">
+                        <ItemsControl.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal" Margin="5" Background="{Binding Rank, Converter={StaticResource RankToColorConverter}}">
+                                    <TextBox Text="{Binding Rank}" FontSize="24" Margin="5,0,0,0" BorderThickness="0" Background="{Binding Rank, Converter={StaticResource RankToColorConverter}}" Foreground="Black" HorizontalAlignment="Center" IsReadOnly="True" VerticalAlignment="Center" />
+                                    <StackPanel Margin="10">
+                                        <TextBlock Text="Yield:" FontWeight="Bold" FontSize="16" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Yield}" FontSize="16" Foreground="Black"/>
+                                    </StackPanel>
+                                    <StackPanel Margin="10">
+                                        <TextBlock Text="Efficiency:" FontWeight="Bold" FontSize="16" Foreground="Black"/>
+                                        <TextBlock Text="{Binding Efficiency}" FontSize="16" Foreground="Black"/>
+                                    </StackPanel>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ItemsControl.ItemTemplate>
+                    </ItemsControl>
+                </StackPanel>
+            </ScrollViewer>
+        </Grid>
     </Grid>
 </Page>

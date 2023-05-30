@@ -138,5 +138,11 @@
     <Resource Include="Images\tree_tile.png" />
     <Resource Include="Images\water_tile.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\output_tile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\millhouse_tile.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
