@@ -150,12 +150,12 @@ namespace CST238_Final_Project
 
         private void OptimizeForButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Optimize For clicked"); // Placeholder for button functionality
+            MessageBox.Show("Select a resource to produce an optimized output for!"); // Placeholder for button functionality
         }
 
         private void ChangeMapSizeButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Change Map Size clicked"); // Placeholder for button functionality
+            MessageBox.Show("Change Map Size Here"); // Placeholder for button functionality
         }
 
         private void GenerateButton_Click(object sender, RoutedEventArgs e)
