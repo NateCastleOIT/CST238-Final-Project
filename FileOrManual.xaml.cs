@@ -44,5 +44,11 @@ namespace CST238_Final_Project
         {
             NavigationService?.Navigate(new ManualEdit(SelectedGame));
         }
+
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            GameSelect gameSelectPage = new GameSelect();
+            NavigationService?.Navigate(gameSelectPage);
+        }
     }
 }

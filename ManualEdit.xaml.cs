@@ -198,6 +198,11 @@ namespace CST238_Final_Project
             }
         }
 
+        private void BackButtonClick(object sender, RoutedEventArgs e)
+        {
+            GameSelect gameSelectPage = new GameSelect();
+            NavigationService?.Navigate(gameSelectPage);
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

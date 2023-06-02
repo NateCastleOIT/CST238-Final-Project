@@ -35,6 +35,7 @@
             </Grid.ColumnDefinitions>
             <Button Click="LoadButton_Click" Content="Load Map From File" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" Height="75" Width="175" Margin="8"/>
             <Button Click="ManualEditButton_Click" Content="Manually Edit Map" FontWeight="Bold" FontSize="18" HorizontalAlignment="Center" Height="75" Width="175" Margin="8" Grid.Column="2"/>
+            <Button Content="Back" Click="BackButtonClick" Margin="106,101,104.4,-44.8" FontSize="24" Grid.ColumnSpan="3"/>
         </Grid>
     </Grid>
 </Page>
