@@ -6,28 +6,13 @@
       xmlns:local="clr-namespace:CST238_Final_Project"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="GameSelect">
+      Title="GameSelect"
+      Background="Gray">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
-        <!-- Menu Bar -->
-        <Menu Grid.Row="0">
-            <MenuItem Header="_File">
-                <MenuItem Header="_Open"/>
-                <MenuItem Header="_Save"/>
-            </MenuItem>
-            <MenuItem Header="_Edit">
-                <MenuItem Header="_Cut"/>
-                <MenuItem Header="_Copy"/>
-                <MenuItem Header="_Paste"/>
-            </MenuItem>
-            <MenuItem Header="_Help">
-                <MenuItem Header="_About"/>
-            </MenuItem>
-        </Menu>
 
         <!-- Game Thumbnails -->
         <ScrollViewer Grid.Row="1">

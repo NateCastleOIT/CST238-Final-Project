@@ -1,7 +1,8 @@
 ﻿<Page x:Class="CST238_Final_Project.FileOrManual"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-      Title="FileOrManual">
+      Title="FileOrManual"
+      Background="Gray">
     <Grid HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
